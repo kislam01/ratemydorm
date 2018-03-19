@@ -1,0 +1,51 @@
+{% load staticfiles %}
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Dorm search page for Tufts Cribz">
+  <meta name="author" content="Tufts Cribz Dev Team">
+
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="{% static '/images/tufts_logo.png' %}"/>
+
+  <title>Tufts Cribz: Dorm Search</title>
+</head>
+
+<body>
+    <div class="basic">
+        {% include "reviews/nav.html" %}    
+    </div>
+    
+	<div class="jumbotron">
+		<div class="container">
+			<h3>Tufts Dorms:</h3>
+			{% if dorms_list %}
+			<div class="row">
+				{% for dorm in dorms_list %}
+				<div class="col-md-12"><h4><a href="/{{ dorm.dorm_id }}/">{{ dorm.name }}</a>
+				<small id="description{{ dorm.dorm_id }}"></small></h4>
+				
+				</div>
+
+				<script> // cut off the description for dorms at 50 characters and add an ellipses
+					String.prototype.trunc = String.prototype.trunc ||
+      						function(n){
+          						return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
+      						};
+      					var s = "{{dorm.comments}}";
+      					document.getElementById("description{{ dorm.dorm_id }}").innerHTML = "- " + s.trunc(100);
+				</script>
+				{% endfor %}
+			</div>
+			{% else %}
+			<p>No dorms are available.</p>
+			{% endif %}
+		</div>
+	</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>

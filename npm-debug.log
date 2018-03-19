@@ -1,0 +1,62 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.3.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'requirements.txt' ]
+2 info using npm@3.10.3
+3 info using node@v6.3.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData requirements.txt
+8 silly fetchOtherPackageData requirements.txt
+9 silly cache add args [ 'requirements.txt', null ]
+10 verbose cache add spec requirements.txt
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'requirements.txt',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: 'requirements.txt',
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'requirements.txt',
+11 silly cache add   spec: '/Users/Jchu96/Desktop/comp120-s2017-team9/requirements.txt',
+11 silly cache add   type: 'local' }
+12 silly addLocalTarball shasum (computed) b354104881ea43783b879a961962dfb102650d58
+13 verbose addTmpTarball /Users/Jchu96/Desktop/comp120-s2017-team9/requirements.txt not in flight; adding
+14 verbose correctMkdir /Users/Jchu96/.npm correctMkdir not in flight; initializing
+15 verbose addTmpTarball validating metadata from /Users/Jchu96/Desktop/comp120-s2017-team9/requirements.txt
+16 verbose tar unpack /Users/Jchu96/Desktop/comp120-s2017-team9/requirements.txt
+17 verbose tar unpacking to /var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37
+18 silly gentlyRm /var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37 is being purged
+19 verbose gentlyRm don't care about contents; nuking /var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37
+20 silly gunzTarPerm modes [ '755', '644' ]
+21 error not a package /Users/Jchu96/Desktop/comp120-s2017-team9/requirements.txt
+22 error addLocal Could not install /Users/Jchu96/Desktop/comp120-s2017-team9/requirements.txt
+23 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json'
+23 silly fetchPackageMetaData     at Error (native)
+23 silly fetchPackageMetaData  error for requirements.txt { Error: ENOENT: no such file or directory, open '/var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json'
+23 silly fetchPackageMetaData     at Error (native)
+23 silly fetchPackageMetaData   errno: -2,
+23 silly fetchPackageMetaData   code: 'ENOENT',
+23 silly fetchPackageMetaData   syscall: 'open',
+23 silly fetchPackageMetaData   path: '/var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json' }
+24 silly rollbackFailedOptional Starting
+25 silly rollbackFailedOptional Finishing
+26 silly runTopLevelLifecycles Starting
+27 silly runTopLevelLifecycles Finishing
+28 silly install printInstalled
+29 verbose stack Error: ENOENT: no such file or directory, open '/var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json'
+29 verbose stack     at Error (native)
+30 verbose cwd /Users/Jchu96/Desktop/comp120-s2017-team9
+31 error Darwin 14.5.0
+32 error argv "/usr/local/Cellar/node/6.3.0/bin/node" "/usr/local/bin/npm" "install" "requirements.txt"
+33 error node v6.3.0
+34 error npm  v3.10.3
+35 error path /var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json
+36 error code ENOENT
+37 error errno -2
+38 error syscall open
+39 error enoent ENOENT: no such file or directory, open '/var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json'
+40 error enoent ENOENT: no such file or directory, open '/var/folders/yy/glrp88c57b993lwjr6cglfw00000gp/T/npm-5081-b3465032/unpack-fa1e7f37/package.json'
+40 error enoent This is most likely not a problem with npm itself
+40 error enoent and is related to npm not being able to find a file.
+41 verbose exit [ -2, true ]

@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">  
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-left"><img src="{% static '/images/tufts_logo.png' %}" width="40" height="40" hspace="10" vspace= "5" alt="Tufts Logo"></a>
+      <a class="navbar-brand" href="/">Tufts Cribz</a>
+    </div>
+
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/dorm_search/">Search</a></li>
+        <li><a href="/review/">Review</a></li>
+        <li><a href="/about/">About</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="/profile/">Profile</a></li>
+        {% else %}
+            <li><a href="/login/">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

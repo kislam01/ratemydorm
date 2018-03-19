@@ -1,0 +1,116 @@
+{% load staticfiles %}
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Map page for Tufts Cribz">
+  <meta name="author" content="Tufts Cribz Dev Team">
+
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/star-rating.min.css' %}" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="{% static '/images/tufts_logo.png' %}"/>
+
+  <title>Tufts Cribz: Map</title>
+
+  <style>
+      /* Set the map height explicitly to define the size of the div
+      * element that contains the map. */
+        #map {
+          height: 100%;
+        } 
+        /* Makes the map fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+  </style>
+</head>
+
+<body>
+  <div class="basic">
+        {% include "reviews/nav.html" %}    
+    </div>
+
+
+  <div id="map"></div>
+
+  <script>
+    var map;
+    function initMap() {
+      var tufts = {lat: 42.407450, lng: -71.120088};
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: tufts,
+        zoom: 16
+      });
+      
+      var image = {
+        url: "{% static '/images/dorm_icon.png' %}",
+        scaledSize: new google.maps.Size(35, 35),
+        origin: new google.maps.Point(0,0), 
+        anchor: new google.maps.Point(0,0) 
+      }
+      {% if dorms_list %}
+      {% for dorm in dorms_list %}  
+        var dorm{{dorm.dorm_id}} = new google.maps.Marker({
+          position: {lat: {{dorm.lat}}, lng: {{dorm.long}} },
+          map: map,
+          icon: image,
+          title: "{{dorm.name}}"
+        });
+
+        var contentString{{dorm.dorm_id}} = 
+          "<div class='container'>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><a href='/{{dorm.dorm_id}}/'><h3>{{dorm.name}}</h3></a></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-6'><p>{{dorm.address}}</p>" + "<br></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Comments:</strong> {{dorm.comments}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-6'><p><strong>Gender Policy:</strong> {{dorm.gender_policy}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Bathroom Style:</strong> {{dorm.bathroom_style}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Room Style:</strong> {{dorm.room_style}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Custodial Services:</strong> {{dorm.custodial_services}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Amenities:</strong> {{dorm.amenities}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Class Years:</strong> {{dorm.class_years}}</p></div>" +
+          "</div>" +
+          "<div class='row'>" +
+            "<div class='col-md-12'><p><strong>Handicap Access:</strong> {{dorm.handicap_access}}</p></div>" +
+          "</div>" +
+          "</div>";
+        
+        var infowindow{{dorm.dorm_id}} = new google.maps.InfoWindow({
+          content: contentString{{dorm.dorm_id}}
+        });
+
+        dorm{{dorm.dorm_id}}.addListener('click', function() {
+          infowindow{{dorm.dorm_id}}.open(map, dorm{{dorm.dorm_id}});
+        });
+
+      {% endfor %}
+      {% endif %}  
+    }
+  </script>
+  
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfAL9qD19KLIjdTPSpSOnI0V3vaOTIA1s&amp;callback=initMap"
+  type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/star-rating.min.js' %}"></script>
+</body>
